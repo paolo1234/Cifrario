@@ -84,5 +84,58 @@
           } 
           
         </script>
+
+<style>
+  #Tris{
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3 , 50px);
+  }
+  #Tris span{
+    padding: 20px;
+    background-color: white;
+    border-right: 1px black solid;
+    border-bottom: 1px solid black;
+  }
+  #Tris span:nth-child(7) , #Tris span:nth-child(8),#Tris span:nth-child(9){
+    border-bottom: none;
+  }
+  #Tris span:nth-child(3), #Tris span:nth-child(6), #Tris span:nth-child(9){
+    border-right: none;
+  }
+
+</style>
+
+<div id="Tris">
+  <span class = "box" id="uno" onclick="sett(this);"></span>
+  <span class = "box" id="due" onclick="sett(this);"></span>
+  <span class = "box" id="tre" onclick="sett(this);"></span>
+  <span class = "box" id="quattro" onclick="sett(this);"></span>
+  <span class = "box" id="cinque" onclick="sett(this);"></span>
+  <span class = "box" id="sei" onclick="sett(this);"></span>
+  <span class = "box" id="sette" onclick="sett(this);"></span>
+  <span class = "box" id="otto" onclick="sett(this);"></span>
+  <span class = "box" id="nove" onclick="sett(this);"></span>
+</div>
+
+<script>
+let S = true;
+function sett(a){
+  if(S) {a.innerHTML = "X"; S=false; } else{ a.innerHTML = "O"; S=true; }
+  checkResult();
+}
+
+function checkResult(){
+
+    const box = document.getElementsByClassName('box');
+
+    for(i = 0;  i < box.length; i++){
+      if()
+    }
+
+}
+
+</script>
+
 </body>
 </html>

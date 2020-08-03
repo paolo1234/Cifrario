@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cifrario</title>
-</head>
-<body>
-    <div>
-        <form onsubmit="creaTabellas" method="post">
-            <input type="text" id="parolachiave">
-            <input type="submit" value="Invia">
-        </form>
-    </div>
-    <div id="cifrario">
-        test
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Cifrario PlayfarJS</title>
+  </head>
+  <body>
+        <div id="root">
+            <h1 id="Titolo">Cifrario Playfar<span style="color: yellow">[JS]</span></h1>
+            <div id="form">
+              <input
+                type="text"
+                id="parolachiave"
+                placeholder="Parola chiave"
+                onchange="setP();"
+                onkeyup="setP();"
+              />
+            </div>
+            <div id="cifrario"></div>
+
+
+          </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
