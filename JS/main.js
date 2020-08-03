@@ -12,7 +12,7 @@ function Matrix(rows) {
 function check(p, M) {
   // Controlla se un carattere è vuoto o già presente nell matrice
   for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 5; j++) if (p == " " || M[i][j] == p) return true;
+    for (let j = 0; j < 5; j++) if (p == " " || M[i][j] == p || !(p.match(/[a-z]/i))) return true;
   }
   return false;
 }
@@ -65,7 +65,20 @@ function PrintMatrix(M) {
 }
 
 function setP() {
-  const p = document.getElementById("parolachiave").value;
+    const p = document.getElementById("parolachiave").value;
+    let str = "";
+    for(let i = 0; i < p.length ; i++){
+        let cha = p.charAt(i);
+        if (cha == " " || !(cha.match(/[a-z]/i))){
+            console.log("rimosso:", cha);
+        }else{
+            str = str + cha;
+        }
+
+        document.getElementById("parolachiave").value = str;
+    }
+
+  
   const M = DrawMatrix(p);
   PrintMatrix(M);
 }
