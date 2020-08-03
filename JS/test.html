@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .cella{
+            padding : 8px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+   <input type="text" id="p" onchange="setP();">
+
+   <div id="root">
+
+   </div>
+    <script>
+        function Create2DArray(rows) { // Funzione per creare una matrice in js
+            var arr = [];
+          
+            for (var i=0;i<rows;i++) {
+               arr[i] = [];
+            }
+          
+            return arr;
+          }
+          
+          const M = Create2DArray(5);
+          
+
+          function setP(){
+             let p = document.getElementById('p').value.toLowerCase();
+              DrawMatrix(p);
+          }
+          
+          
+          
+
+          function DrawMatrix(p){
+            let a = 0,k = 0;
+            let n = 5;
+            const al = "abcdefghijklmnopqrstuvwyz";
+          for(i=0;i<n;i++){
+              for(j=0;j<n;j++){
+                  if(a < p.length){
+                      let ca = p.charAt(a).toLowerCase();
+                      if(!check(ca,M)){
+                        M[i][j] = ca;
+                      }else{
+                          j--;
+                      }
+                     a++;
+                  }else{
+                    if(k < al.length){
+                        let ce = al.charAt(k).toLowerCase();
+                        if(!check(ce,M)){
+                            M[i][j] = ce;
+                          }else{
+                              j--;
+                          }
+                        k++;
+                    }
+                  }
+              }
+          }
+
+          function check(p, M){
+            for(let i = 0; i < 5; i++){
+                for(let j = 0; j < 5; j++)
+                 if(M[i][j] == p) return true;
+            }
+            return false;
+          }
+          const root = document.getElementById('root').innerHTML;
+          for(i = 0; i < 5; i++){
+             document.getElementById('root').innerHTML += "<br>";
+              for(j = 0; j < 5; j++)
+              document.getElementById('root').innerHTML += ("<span class='cella'>" + M[i][j] + " <span>");
+          }
+          } 
+          
+        </script>
+</body>
+</html>
