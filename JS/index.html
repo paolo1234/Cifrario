@@ -8,7 +8,7 @@
   </head>
   <body>
         <div id="root">
-            <h1 id="Titolo">Cifrario Playfar<span style="color: yellow">[JS]</span></h1>
+            <h1 id="Titolo">Cifrario Playfair<span style="color: yellow">[JS]</span></h1>
             <div id="form">
               <input
                 type="text"
@@ -17,9 +17,11 @@
                 onchange="setP();"
                 onkeyup="setP();"
               />
+              <input type="text" id="messaggio" placeholder="Messaggio Segreto" onchange="dividi();">
+              <div id="digrafo"></div>
+              <div id="cifrato"></div>
             </div>
             <div id="cifrario"></div>
-
 
           </div>
     <script src="main.js"></script>
