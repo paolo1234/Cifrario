@@ -1,0 +1,33 @@
+Dichiaro la variabile M;
+
+Matrix() : Ritorna una matrice quadrata di 'rows' righe
+
+checkC(c, M) : Ritorna true se il carattere è gia presente nella matrice o se è un carattere non valido (Spazi o caratteri speciali)
+
+validateP() : Elimina caratteri non validi dalla casella di testo messaggio
+
+
+
+
+1. Scrivo parola chiave
+
+
+Ottengo matrice
+
+1. Scrivo messaggio
+
+2. Rimpiazzio gli spazi con una 'x'
+
+3. Divido il messaggio in digrafi 
+
+3. Se il digrafo contiene una sola cifra aggiungo una 'x'
+
+Ottengo il vettore di digrafi.
+
+1. Se il digrafo contiene una 'x' allora aggiungo alla stringa la crifra diversa da x
+
+2. Se il digrafo contiene due doppie allora aggiungo alla stringa lo stesso digrafo
+
+3. Trovo la posizione di entrambe le cifre del digrafo
+
+4. Verifico stessa riga, stessa colonna, diversi

@@ -14,16 +14,19 @@
                 type="text"
                 id="parolachiave"
                 placeholder="Parola chiave"
-                onchange="setP();"
-                onkeyup="setP();"
+                onkeyup = "validateP(this)"
               />
-              <input type="text" id="messaggio" placeholder="Messaggio Segreto" onchange="dividi();">
+              <input type="text" id="messaggio" placeholder="Messaggio Segreto" onchange="Cripta(this);">
               <div id="digrafo"></div>
               <div id="cifrato"></div>
             </div>
             <div id="cifrario"></div>
 
           </div>
+
     <script src="main.js"></script>
   </body>
 </html>
+
+<!-- onchange="setP();"
+                onkeyup="setP();" -->
