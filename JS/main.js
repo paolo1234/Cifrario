@@ -87,7 +87,7 @@ function setP() {
 
 function dividi(){
   
-  let messaggio = document.getElementById('messaggio').value;
+  let messaggio = document.getElementById('messaggio').value.toLowerCase();
   
   messaggio = messaggio.replace(/ /g, "");
   
@@ -131,7 +131,7 @@ function dividi(){
       }
 
       let str = "";
-    if(M[posI1][posJ1] != M[posI2][posJ2]){
+      if(M[posI1][posJ1] != M[posI2][posJ2]){
 
     
       if(posI1 != posI2){
@@ -160,13 +160,6 @@ function dividi(){
 }
 
 function StessaColonna(c, r1, r2){
-      // return ((r1 || r2) < M.length) ? `${M[r1+1][c]}${M[r2+1][c]}` : `${M[0][c]}${M[0][c]}`;
-
-      // if(r2 > M.length){
-      //   return `${M[r1+1][c]}${M[0][c]}`
-      // }
-      
-      
       if(r2 == M.length -1){
         console.log(`C2: (${r2}) supera la lunghezza della matrice (${M.length -1})`);
         // return (M[posI1][posJ1] != 'x' || M[posI2][posJ2] != 'x') ? `${M[r1+1][c]}${M[0][c]}` : `[XX]`;
@@ -188,7 +181,6 @@ function StessaColonna(c, r1, r2){
 }
 
 function StessaRiga(r, c1, c2 ){
-      // return `${M[r][c1+1]}${M[r][c2+1]}`;
 
       if(c2 == M.length -1){
         console.log(`C2: (${c2}) supera la lunghezza della matrice (${M.length -1})`);
@@ -209,12 +201,6 @@ function StessaRiga(r, c1, c2 ){
 }
 
 function Diversi(posI1, posI2, posJ1, posJ2) {
-  console.log("FORMA RETTANGOLO");
-  
-  // for(let i = 0; i < posJ2; i++){
-
-  // }
-  
   return `${M[posI2][posJ1]}${M[posI1][posJ2]}`;
 }
 
