@@ -125,7 +125,7 @@ function Dividi(input) {
        messaggio = messaggio.slice(0,i+1)+'x'+messaggio.slice(i+1);
     }
     let digrafo = messaggio.slice(i, i + 2);
-    digrafi.push(digrafo.length > 1 ? digrafo : digrafo);
+    digrafi.push(digrafo.length > 1 ? digrafo : digrafo.concat('x'));
   }
 
   return digrafi;
@@ -160,9 +160,9 @@ function Diversi(posI1, posI2, posJ1, posJ2) {
 }
 
 function validateP(input) {
-  let regex = /[^a-z]/g;
+  let regex = /[^a-z ]/gi;
   input.value = input.value.replace(regex, "");
-  const p = input.value;
+  const p = input.value.toLocaleLowerCase();
   const M = DrawMatrix(p);
   PrintMatrix(M);
 }
