@@ -74,9 +74,11 @@ function StessaColonna(c, r1, r2) {
   if(Mode){
     if (r2 == M.length - 1) {
       return `${M[r1 + 1][c]}${M[0][c]}`;
-    } else if (r1 == M.length - 2) {
-      return `${M[r1 + 1][c]}${M[0][c]}`;
-    } else if (r1 == M.length - 1) {
+    } 
+    // else if (r1 == M.length - 2) {
+    //   return `${M[r1 + 1][c]}${M[0][c]}`;
+    // }
+     else if (r1 == M.length - 1) {
       return `${M[0][c]}${M[r2 + 1][c]}`;
     } else {
       return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
@@ -84,6 +86,7 @@ function StessaColonna(c, r1, r2) {
   }else{
     if(r1 == 0) return `${M[M.length -1][c]}${M[r2 - 1][c]}`;
     else if (r2 == 0) return `${M[r1-1][c]}${M[M.length -1][c]}`;
+    
     else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
   }
 }
@@ -191,6 +194,7 @@ const Cipher = (input) => {
 function DividiSwitch(input){
 
   let messaggio = input.value.toLowerCase().replace(/ /g, "");
+  messaggio = messaggio.replace(/è/g, "e").replace(/à/g, "a").replace(/ò/g, "o").replace(/ù/g, "u").replace(/ì/g, "i");
 
   let digrafi = [];
 
