@@ -7,26 +7,42 @@
     <title>Cifrario PlayfarJS</title>
   </head>
   <body>
-        <div id="root">
-            <h1 id="Titolo">Cifrario Playfair<span style="color: yellow">[JS]</span></h1>
-            <div id="form">
-              <input
-                type="text"
-                id="parolachiave"
-                placeholder="Parola chiave"
-                onkeyup = "validateP(this)"
-              />
-              <input type="text" id="messaggio" placeholder="Messaggio Segreto" onchange="Cripta(this);">
-              <div id="digrafo"></div>
-              <div id="cifrato"></div>
-            </div>
-            <div id="cifrario"></div>
-
-          </div>
+    <div id="root">
+      <div id="top">
+        <h1 id="Titolo">
+          Cifrario Playfair<span style="color: yellow;">[JS]</span>
+        </h1>
+      </div>
+      <div id="form">
+        <div id="setMode">
+          <button class="active" id="setCrypta" onclick="setCrypta();">
+            Crypta</button
+          ><button id="setDecrypta" onclick="setDecrypta();">Decrypta</button>
+        </div>
+        <div id="box">
+          <input
+            type="text"
+            id="parolachiave"
+            placeholder="Parola chiave"
+            onkeyup="validateP(this)"
+          />
+          <input
+            type="text"
+            id="messaggio"
+            placeholder="Messaggio Segreto"
+            onchange="Cipher(this);"
+          />
+        </div>
+      </div>
+      <div id="mes">
+        <div id="cifrario"></div>
+        <div>
+          <div id="digrafo"></div>
+          <div id="cifrato"></div>
+        </div>
+      </div>
+    </div>
 
     <script src="main.js"></script>
   </body>
 </html>
-
-<!-- onchange="setP();"
-                onkeyup="setP();" -->
