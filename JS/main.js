@@ -184,7 +184,7 @@ const Cipher = (input) => {
     else {
       str += Diversi(posI1, posI2, posJ1, posJ2);
     }
-    document.getElementById("cifrato").innerHTML = str.toLocaleUpperCase().replace(/x/gi, "");
+    document.getElementById("cifrato").innerHTML = (!Mode) ? str.toLocaleUpperCase().replace(/x/gi, "") : str.toLocaleUpperCase();
   });
 };
 
