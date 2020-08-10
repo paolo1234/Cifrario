@@ -63,50 +63,6 @@ function PrintMatrix(M) {
   }
 }
 
-function Crypta(input) {
-  
-  const digrafi = DividiSwitch(input);
-
-  let str = "";
-
-  StampaDigrafi(digrafi);
-
-  digrafi.forEach((digrafo) => {
-    let posI1, posJ2;
-    //TROVO CARATTERE 1 NELLA MATRICE
-    for (i1 = 0; i1 < M.length; i1++) {
-      for (j1 = 0; j1 < M.length; j1++) {
-        if (digrafo.charAt(0) == M[i1][j1]) {
-          posI1 = i1;
-          posJ1 = j1;
-        }
-      }
-    }
-    //TROVO CARATTERE 2 NELLA MATRICE
-    for (i2 = 0; i2 < M.length; i2++) {
-      for (j2 = 0; j2 < M.length; j2++) {
-        if (digrafo.charAt(1) == M[i2][j2]) {
-          posI2 = i2;
-          posJ2 = j2;
-        }
-      }
-    }
-    //CONTROLLO STESSA RIGA
-    if (posI1 == posI2 && posJ1 != posJ2) {
-      str += StessaRiga(posI1, posJ1, posJ2);
-    }
-    //CONTROLLO STESSA COLONNA
-    else if (posI1 != posI2 && posJ1 == posJ2) {
-      str += StessaColonna(posJ1, posI1, posI2);
-    }
-    //DIVERSI
-    else {
-      str += Diversi(posI1, posI2, posJ1, posJ2);
-    }
-    document.getElementById("cifrato").innerHTML = str.toLocaleUpperCase();
-  });
-}
-
 function StampaDigrafi(v) {
   document.getElementById("digrafo").innerHTML = "";
   v.forEach((value) => {
@@ -115,27 +71,49 @@ function StampaDigrafi(v) {
 }
 
 function StessaColonna(c, r1, r2) {
-  if (r2 == M.length - 1) {
-    return `${M[r1 + 1][c]}${M[0][c]}`;
-  } else if (r1 == M.length - 2) {
-    return `${M[r1 + 1][c]}${M[0][c]}`;
-  } else if (r1 == M.length - 1) {
-    return `${M[0][c]}${M[r2 + 1][c]}`;
-  } else {
-    return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
+  if(Mode){
+    if (r2 == M.length - 1) {
+      return `${M[r1 + 1][c]}${M[0][c]}`;
+    } else if (r1 == M.length - 2) {
+      return `${M[r1 + 1][c]}${M[0][c]}`;
+    } else if (r1 == M.length - 1) {
+      return `${M[0][c]}${M[r2 + 1][c]}`;
+    } else {
+      return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
+    }
+  }else{
+    if(r1 == 0) return `${M[M.length -1][c]}${M[r2 - 1][c]}`;
+    else if (r2 == 0) return `${M[r1-1][c]}${M[M.length -1][c]}`;
+    else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
   }
 }
 
 
 function StessaRiga(r, c1, c2) {
-  if (c2 == M.length - 1) {
-    return `${M[r][c1 + 1]}${M[r][0]}`;
-  } else if (c1 == M.length - 2) {
-    return `${M[r][c1 + 1]}${M[r][1]}`;
-  } else if (c1 == M.length - 1) {
-    return `${M[r][0]}${M[r][c2 + 1]}`;
-  } else {
-    return `${M[r][c1 + 1]}${M[r][c2 + 1]}`;
+  if(Mode){
+    if(c2 == M.length - 1) {
+      return `${M[r][c1 + 1]}${M[r][0]}`;
+    } 
+    // else if (c1 == M.length - 2) {
+    //   return `${M[r][c1 + 1]}${M[r][1]}`;
+    else if (c1 == M.length - 1) {
+      return `${M[r][0]}${M[r][c2 + 1]}`;
+    } 
+    else {
+      return `${M[r][c1 + 1]}${M[r][c2 + 1]}`;
+    }
+  }else if (Mode == false){
+    if (c1 == M.length -1 && c2 == 0) {
+      return`${M[r][c1 - 1]}${M[r][c1]}`;
+    }else if(c2 == 0){
+      return `${M[r][c1 - 1]}${M[r][M.length-1]}`;
+    }
+    else if(c1 == 0){
+      return `${M[r][M.length-1]}${M[r][c2-1]}`;
+    }
+    else {
+        return `${M[r][c1 - 1]}${M[r][c2 - 1]}`;
+    }
   }
 }
 
@@ -167,63 +145,48 @@ const setDecrypta = () => {
 
 const Cipher = (input) => {
     document.getElementById("cifrato").innerHTML = "";
-    if(Mode){
-      Crypta(input);
-    }else{
-      let d = DividiSwitch(input);
-      console.log(d);
-      d.forEach((digrafo) => {
-        let posI1, posJ2; let str = "";
-        //TROVO CARATTERE 1 NELLA MATRICE
-        for (i1 = 0; i1 < M.length; i1++) {
-          for (j1 = 0; j1 < M.length; j1++) {
-            if (digrafo.charAt(0) == M[i1][j1]) {
-              posI1 = i1;
-              posJ1 = j1;
-            }
-          }
+
+    let str = "";
+
+    let digrafi = DividiSwitch(input);
+
+    StampaDigrafi(digrafi);
+
+    
+  digrafi.forEach((digrafo) => {
+    let posI1, posJ2;
+    //TROVO CARATTERE 1 NELLA MATRICE
+    for (i1 = 0; i1 < M.length; i1++) {
+      for (j1 = 0; j1 < M.length; j1++) {
+        if (digrafo.charAt(0) == M[i1][j1]) {
+          posI1 = i1;
+          posJ1 = j1;
         }
-        //TROVO CARATTERE 2 NELLA MATRICE
-        for (i2 = 0; i2 < M.length; i2++) {
-          for (j2 = 0; j2 < M.length; j2++) {
-            if (digrafo.charAt(1) == M[i2][j2]) {
-              posI2 = i2;
-              posJ2 = j2;
-            }
-          }
-        }
-        //CONTROLLO STESSA RIGA
-        if (posI1 == posI2 && posJ1 != posJ2) {
-          console.log(StessaRiga2(posI1, posJ1, posJ2));
-        }
-        // //CONTROLLO STESSA COLONNA
-        // else if (posI1 != posI2 && posJ1 == posJ2) {
-        //   str += StessaColonna(posJ1, posI1, posI2);
-        // }
-        // //DIVERSI
-        // else {
-        //   str += Diversi(posI1, posI2, posJ1, posJ2);
-        // }
-        document.getElementById("cifrato").innerHTML = str.toLocaleUpperCase();
-      });
+      }
     }
-
+    //TROVO CARATTERE 2 NELLA MATRICE
+    for (i2 = 0; i2 < M.length; i2++) {
+      for (j2 = 0; j2 < M.length; j2++) {
+        if (digrafo.charAt(1) == M[i2][j2]) {
+          posI2 = i2;
+          posJ2 = j2;
+        }
+      }
+    }
+    //CONTROLLO STESSA RIGA
+    if (posI1 == posI2 && posJ1 != posJ2) {
+      str += StessaRiga(posI1, posJ1, posJ2);
+    //CONTROLLO STESSA COLONNA
+    }else if (posI1 != posI2 && posJ1 == posJ2) {
+      str += StessaColonna(posJ1, posI1, posI2);
+    }
+    //DIVERSI
+    else {
+      str += Diversi(posI1, posI2, posJ1, posJ2);
+    }
+    document.getElementById("cifrato").innerHTML = str.toLocaleUpperCase().replace(/x/gi, "");
+  });
 };
-
-function StessaRiga2(r, c1, c2) {
-
-  if (c1 == M.length -1 && c2 == 0) {
-    console.log(`RIGA c1 fine: ${M[r][c1 - 1]}${M[r][c1]}`);
-  }else if(c2 == 0){
-    console.log(`RIGA c2 == 0: ${M[r][c1 - 1]}${M[r][M.length-1]}`);
-  }
-  else if(c1 == 0){
-    console.log(`RIGA c1==0: ${M[r][M.length-1]}${M[r][c2-1]}`);
-  }
-  else {
-      console.log(`RIGA : ${M[r][c1 - 1]}${M[r][c2 - 1]}`);
-  }
-}
 
 function DividiSwitch(input){
 
