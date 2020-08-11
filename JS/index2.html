@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style2.css">
+    <title>Cifrario PlayfarJS</title>
+  </head>
+  <body>
+
+    <h1 id="titolo">
+        Cifrario Playfair<span style="color: yellow;">[JS]</span>
+    </h1>
+    <div id="setMode">
+        <button class="active" id="setCrypta" onclick="setCrypta();">
+          Crypta</button
+        ><button id="setDecrypta" onclick="setDecrypta();">Decrypta</button>
+    </div>
+
+  <div id="inputbox">
+
+    <input
+    type="text"
+    id="parolachiave"
+    placeholder="Parola chiave"
+    onkeyup="validateP(this)"
+  />
+  <input
+    type="text"
+    id="messaggio"
+    placeholder="Messaggio Segreto"
+    onchange="Cipher(this);"
+    onkeyup="Cipher(this);"
+  />
+  </div>
+    
+    <div id="root">
+      <div id="digrafo"></div>
+      <textarea id="cifrato" placeholder="Messaggio Cryptato/Decryptato"></textarea>
+      <div id="cifrario"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
