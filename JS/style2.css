@@ -99,3 +99,21 @@ body{
 #digrafo{
     display: none;
 }
+
+@media (max-width: 500px){
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+    #titolo{
+        width: 100%;
+        font-size: 55px;
+    }
+}
+
+@media (max-width: 500px){
+    #titolo{
+        width: 100%;
+        font-size:40px;
+    }
+}
