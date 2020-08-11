@@ -105,6 +105,9 @@ body{
         display: flex;
         flex-direction: column;
     }
+    #box{
+        width: 100%;
+    }
     #titolo{
         width: 100%;
         font-size: 55px;
@@ -113,6 +116,7 @@ body{
         align-self: center;
         justify-self: center;
         width: 70vw;
+        margin: 10px;
     }
 }
 
