@@ -135,6 +135,8 @@ function validateP(input) {
 const setCrypta = () => {
     document.getElementById("setCrypta").className = "active";
     document.getElementById("setDecrypta").className = "";
+    document.getElementById("messaggio").value = "";
+    document.getElementById("cifrato").value = "";
     Mode = true;
 };
 
@@ -142,6 +144,8 @@ const setDecrypta = () => {
 
     document.getElementById("setDecrypta").className = "active";
     document.getElementById("setCrypta").className = "";
+    document.getElementById("messaggio").value = "";
+    document.getElementById("cifrato").value = "";
     Mode = false;
     
 };

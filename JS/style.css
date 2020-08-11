@@ -110,6 +110,7 @@ body{
     }
     #titolo{
         width: 100%;
+        text-align: center;
         font-size: 55px;
     }
     #parolachiave, #messaggio,#cifrato{
@@ -117,6 +118,9 @@ body{
         justify-self: center;
         width: 70vw;
         margin: 10px;
+    }
+    #cifrario{
+        margin-top: 10px;
     }
 }
 
