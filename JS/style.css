@@ -111,6 +111,7 @@ body{
     }
     #parolachiave, #messaggio,#cifrato{
         align-self: center;
+        justify-self: center;
         width: 70vw;
     }
 }
