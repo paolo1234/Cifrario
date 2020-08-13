@@ -1,15 +1,7 @@
 let M;
 let Mode = true;// True: crypta -- False: Decrypta
 
-function Matrix(rows) {
-  var arr = [];
-
-  for (var i = 0; i < rows; i++) {
-    arr[i] = [];
-  }
-
-  return arr;
-}
+const Matrix = rows => { let arr = []; for (let i = 0; i < rows; i++) arr[i] = []; return arr; };
 
 function checkC(c, M) {
   for (let i = 0; i < 5; i++) {
@@ -71,51 +63,51 @@ function StampaDigrafi(v) {
 }
 
 function StessaColonna(c, r1, r2) {
-  if(Mode){
+  if (Mode) {
     if (r2 == M.length - 1) {
       return `${M[r1 + 1][c]}${M[0][c]}`;
-    } 
+    }
     // else if (r1 == M.length - 2) {
     //   return `${M[r1 + 1][c]}${M[0][c]}`;
     // }
-     else if (r1 == M.length - 1) {
+    else if (r1 == M.length - 1) {
       return `${M[0][c]}${M[r2 + 1][c]}`;
     } else {
       return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
     }
-  }else{
-    if(r1 == 0) return `${M[M.length -1][c]}${M[r2 - 1][c]}`;
-    else if (r2 == 0) return `${M[r1-1][c]}${M[M.length -1][c]}`;
-    
+  } else {
+    if (r1 == 0) return `${M[M.length - 1][c]}${M[r2 - 1][c]}`;
+    else if (r2 == 0) return `${M[r1 - 1][c]}${M[M.length - 1][c]}`;
+
     else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
   }
 }
 
 
 function StessaRiga(r, c1, c2) {
-  if(Mode){
-    if(c2 == M.length - 1) {
+  if (Mode) {
+    if (c2 == M.length - 1) {
       return `${M[r][c1 + 1]}${M[r][0]}`;
-    } 
+    }
     // else if (c1 == M.length - 2) {
     //   return `${M[r][c1 + 1]}${M[r][1]}`;
     else if (c1 == M.length - 1) {
       return `${M[r][0]}${M[r][c2 + 1]}`;
-    } 
+    }
     else {
       return `${M[r][c1 + 1]}${M[r][c2 + 1]}`;
     }
-  }else if (Mode == false){
-    if (c1 == M.length -1 && c2 == 0) {
-      return`${M[r][c1 - 1]}${M[r][c1]}`;
-    }else if(c2 == 0){
-      return `${M[r][c1 - 1]}${M[r][M.length-1]}`;
+  } else if (Mode == false) {
+    if (c1 == M.length - 1 && c2 == 0) {
+      return `${M[r][c1 - 1]}${M[r][c1]}`;
+    } else if (c2 == 0) {
+      return `${M[r][c1 - 1]}${M[r][M.length - 1]}`;
     }
-    else if(c1 == 0){
-      return `${M[r][M.length-1]}${M[r][c2-1]}`;
+    else if (c1 == 0) {
+      return `${M[r][M.length - 1]}${M[r][c2 - 1]}`;
     }
     else {
-        return `${M[r][c1 - 1]}${M[r][c2 - 1]}`;
+      return `${M[r][c1 - 1]}${M[r][c2 - 1]}`;
     }
   }
 }
@@ -133,58 +125,55 @@ function validateP(input) {
 }
 
 const setCrypta = () => {
-    document.getElementById("setCrypta").className = "active";
-    document.getElementById("setDecrypta").className = "";
-    document.getElementById("messaggio").value = "";
-    document.getElementById("cifrato").value = "";
-    Mode = true;
+  document.getElementById("setCrypta").className = "active";
+  document.getElementById("setDecrypta").className = "";
+  document.getElementById("messaggio").value = "";
+  document.getElementById("cifrato").value = "";
+  Mode = true;
 };
 
 const setDecrypta = () => {
 
-    document.getElementById("setDecrypta").className = "active";
-    document.getElementById("setCrypta").className = "";
-    document.getElementById("messaggio").value = "";
-    document.getElementById("cifrato").value = "";
-    Mode = false;
-    
+  document.getElementById("setDecrypta").className = "active";
+  document.getElementById("setCrypta").className = "";
+  document.getElementById("messaggio").value = "";
+  document.getElementById("cifrato").value = "";
+  Mode = false;
+
+};
+
+const findIndex = (index, digrafo) => {
+  for (i = 0; i < M.length; i++) {
+    for (j = 0; j < M.length; j++) {
+      if (digrafo.charAt(index) == M[i][j]) {
+        posI = i;
+        posJ = j;
+      }
+    }
+  }
+  return [posI, posJ];
 };
 
 const Cipher = (input) => {
-    document.getElementById("cifrato").innerHTML = "";
+  document.getElementById("cifrato").innerHTML = "";
 
-    let str = "";
+  let str = "";
 
-    let digrafi = DividiSwitch(input);
+  let digrafi = DividiSwitch(input);
 
-    StampaDigrafi(digrafi);
+  StampaDigrafi(digrafi);
 
-    
+
   digrafi.forEach((digrafo) => {
-    let posI1, posJ2;
-    //TROVO CARATTERE 1 NELLA MATRICE
-    for (i1 = 0; i1 < M.length; i1++) {
-      for (j1 = 0; j1 < M.length; j1++) {
-        if (digrafo.charAt(0) == M[i1][j1]) {
-          posI1 = i1;
-          posJ1 = j1;
-        }
-      }
-    }
-    //TROVO CARATTERE 2 NELLA MATRICE
-    for (i2 = 0; i2 < M.length; i2++) {
-      for (j2 = 0; j2 < M.length; j2++) {
-        if (digrafo.charAt(1) == M[i2][j2]) {
-          posI2 = i2;
-          posJ2 = j2;
-        }
-      }
-    }
+
+    let [posI1, posJ1] = findIndex(0, digrafo);
+    let [posI2, posJ2] = findIndex(1, digrafo);
+
     //CONTROLLO STESSA RIGA
     if (posI1 == posI2 && posJ1 != posJ2) {
       str += StessaRiga(posI1, posJ1, posJ2);
-    //CONTROLLO STESSA COLONNA
-    }else if (posI1 != posI2 && posJ1 == posJ2) {
+      //CONTROLLO STESSA COLONNA
+    } else if (posI1 != posI2 && posJ1 == posJ2) {
       str += StessaColonna(posJ1, posI1, posI2);
     }
     //DIVERSI
@@ -195,7 +184,7 @@ const Cipher = (input) => {
   });
 };
 
-function DividiSwitch(input){
+function DividiSwitch(input) {
 
   let messaggio = input.value.toLowerCase().replace(/ /g, "");
   messaggio = messaggio.replace(/è/g, "e").replace(/à/g, "a").replace(/ò/g, "o").replace(/ù/g, "u").replace(/ì/g, "i");
@@ -204,14 +193,13 @@ function DividiSwitch(input){
 
   for (let i = 0; i < messaggio.length; i = i + 2) {
 
-    if (Mode && messaggio[i]==messaggio[i+1]){
-       messaggio = messaggio.slice(0,i+1)+'x'+messaggio.slice(i+1);
+    if (Mode && messaggio[i] == messaggio[i + 1]) {
+      messaggio = messaggio.slice(0, i + 1) + 'x' + messaggio.slice(i + 1);
     }
     let digrafo = messaggio.slice(i, i + 2);
     digrafi.push(digrafo.length > 1 || !Mode ? digrafo : digrafo.concat('x'));
   }
 
   return digrafi;
-
 
 }
