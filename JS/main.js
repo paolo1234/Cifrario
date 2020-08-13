@@ -2,15 +2,15 @@ let M;
 let Mode = true;// True: crypta -- False: Decrypta
 
 
-function copy() {
-  let copyText = document.getElementById("cifrato");
+// function copy() {
+//   let copyText = document.getElementById("cifrato");
 
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
-  document.execCommand("copy");
+//   document.execCommand("copy");
 
-}
+// }
 
 const Matrix = rows => { let arr = []; for (let i = 0; i < rows; i++) arr[i] = []; return arr; };
 
