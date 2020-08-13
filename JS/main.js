@@ -1,17 +1,6 @@
 let M;
 let Mode = true;// True: crypta -- False: Decrypta
 
-
-// function copy() {
-//   let copyText = document.getElementById("cifrato");
-
-//   copyText.select();
-//   copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-//   document.execCommand("copy");
-
-// }
-
 const Matrix = rows => { let arr = []; for (let i = 0; i < rows; i++) arr[i] = []; return arr; };
 
 function checkC(c, M) {
@@ -34,20 +23,12 @@ function DrawMatrix(p) {
     for (j = 0; j < M.length; j++) {
       if (a < p.length) {
         let ca = p.charAt(a);
-        if (!checkC(ca, M)) {
-          M[i][j] = ca;
-        } else {
-          j--;
-        }
+        (!checkC(ca, M)) ? M[i][j] = ca : j--;
         a++;
       } else {
         if (k < al.length) {
           let ce = al.charAt(k);
-          if (!checkC(ce, M)) {
-            M[i][j] = ce;
-          } else {
-            j--;
-          }
+          (!checkC(ce, M)) ? M[i][j] = ce : j--;
           k++;
         }
       }
@@ -62,7 +43,7 @@ function PrintMatrix(M) {
   for (i = 0; i < M.length; i++) {
     for (j = 0; j < M.length; j++)
       document.getElementById("cifrario").innerHTML +=
-        "<span class='cella'>" + M[i][j] + " </span>";
+        `<span class='cella'> ${M[i][j]} </span>`;
   }
 }
 
@@ -78,9 +59,6 @@ function StessaColonna(c, r1, r2) {
     if (r2 == M.length - 1) {
       return `${M[r1 + 1][c]}${M[0][c]}`;
     }
-    // else if (r1 == M.length - 2) {
-    //   return `${M[r1 + 1][c]}${M[0][c]}`;
-    // }
     else if (r1 == M.length - 1) {
       return `${M[0][c]}${M[r2 + 1][c]}`;
     } else {
@@ -89,7 +67,6 @@ function StessaColonna(c, r1, r2) {
   } else {
     if (r1 == 0) return `${M[M.length - 1][c]}${M[r2 - 1][c]}`;
     else if (r2 == 0) return `${M[r1 - 1][c]}${M[M.length - 1][c]}`;
-
     else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
   }
 }
@@ -100,8 +77,6 @@ function StessaRiga(r, c1, c2) {
     if (c2 == M.length - 1) {
       return `${M[r][c1 + 1]}${M[r][0]}`;
     }
-    // else if (c1 == M.length - 2) {
-    //   return `${M[r][c1 + 1]}${M[r][1]}`;
     else if (c1 == M.length - 1) {
       return `${M[r][0]}${M[r][c2 + 1]}`;
     }
