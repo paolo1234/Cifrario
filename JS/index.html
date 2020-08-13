@@ -29,6 +29,7 @@
     type="text"
     id="messaggio"
     placeholder="Messaggio Segreto"
+    required
     onchange="Cipher(this);"
     onkeyup="Cipher(this);"
   />
@@ -36,7 +37,11 @@
     
     <div id="root">
       <div id="digrafo"></div>
-      <textarea id="cifrato" placeholder="Messaggio Cryptato/Decryptato"></textarea>
+      
+        <textarea id="cifrato" placeholder="Messaggio Cryptato/Decryptato" readonly></textarea>
+        <button id = "copy" onclick="copy()">Copy text</button>
+
+      
       <div id="cifrario"></div>
     </div>
   </div>

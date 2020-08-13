@@ -56,6 +56,7 @@ body{
     grid-template-columns: repeat(5, 60px);
     grid-template-rows: repeat(5, 60px);
     /* padding: 10px; */
+    margin: 10px;
 }
 
 .cella{
@@ -129,4 +130,10 @@ body{
         width: 100%;
         font-size:40px;
     }
+}
+
+#copy{
+    border: none;
+    padding: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
