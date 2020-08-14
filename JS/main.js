@@ -1,12 +1,18 @@
 let M;
 let Mode = true;// True: crypta -- False: Decrypta
+// DOM 
+const cifrario = document.getElementById("cifrario");
+const digrafo = document.getElementById("digrafo");
+const setCrypta_btn = document.getElementById("setCrypta");
+const setDecrypta_btn = document.getElementById("setDecrypta");
+const messaggio = document.getElementById("messaggio");
+const cifrato = document.getElementById("cifrato");
 
-const Matrix = rows => { let arr = []; for (let i = 0; i < rows; i++) arr[i] = []; return arr; };
+const Matrix = rows => {let arr = []; for (let i = 0; i < rows; i++) arr[i] = []; return arr;};
 
 function checkC(c, M) {
   for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 5; j++)
-      if (c == " " || M[i][j] == c || !c.match(/[a-z]/i)) return true;
+    for (let j = 0; j < 5; j++) if (c == " " || M[i][j] == c || !c.match(/[a-z]/i)) return true;
   }
   return false;
 }
@@ -14,8 +20,7 @@ function checkC(c, M) {
 function DrawMatrix(p) {
   M = Matrix(5);
 
-  let a = 0,
-    k = 0;
+  let a = 0, k = 0;
 
   const al = "abcdefghiklmnopqrstuvwxyz";
 
@@ -25,12 +30,10 @@ function DrawMatrix(p) {
         let ca = p.charAt(a);
         (!checkC(ca, M)) ? M[i][j] = ca : j--;
         a++;
-      } else {
-        if (k < al.length) {
-          let ce = al.charAt(k);
-          (!checkC(ce, M)) ? M[i][j] = ce : j--;
-          k++;
-        }
+      } else if (k < al.length) {
+        let ce = al.charAt(k);
+        (!checkC(ce, M)) ? M[i][j] = ce : j--;
+        k++;
       }
     }
   }
@@ -39,68 +42,46 @@ function DrawMatrix(p) {
 }
 
 function PrintMatrix(M) {
-  document.getElementById("cifrario").innerHTML = "";
+  cifrario.innerHTML = "";
   for (i = 0; i < M.length; i++) {
-    for (j = 0; j < M.length; j++)
-      document.getElementById("cifrario").innerHTML +=
-        `<span class='cella'> ${M[i][j]} </span>`;
+    for (j = 0; j < M.length; j++) cifrario.innerHTML += `<span class='cella'> ${M[i][j]} </span>`;
   }
 }
 
 function StampaDigrafi(v) {
-  document.getElementById("digrafo").innerHTML = "";
+  digrafo.innerHTML = "";
   v.forEach((value) => {
-    document.getElementById("digrafo").innerHTML += value.concat("/");
+    digrafo.innerHTML += value.concat("/");
   });
 }
 
 function StessaColonna(c, r1, r2) {
   if (Mode) {
-    if (r2 == M.length - 1) {
-      return `${M[r1 + 1][c]}${M[0][c]}`;
-    }
-    else if (r1 == M.length - 1) {
-      return `${M[0][c]}${M[r2 + 1][c]}`;
-    } else {
-      return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
-    }
+      if (r2 == M.length - 1) return `${M[r1 + 1][c]}${M[0][c]}`;
+      else if (r1 == M.length - 1) return `${M[0][c]}${M[r2 + 1][c]}`;
+      else return `${M[r1 + 1][c]}${M[r2 + 1][c]}`;
   } else {
-    if (r1 == 0) return `${M[M.length - 1][c]}${M[r2 - 1][c]}`;
-    else if (r2 == 0) return `${M[r1 - 1][c]}${M[M.length - 1][c]}`;
-    else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
+      if (r1 == 0) return `${M[M.length - 1][c]}${M[r2 - 1][c]}`;
+      else if (r2 == 0) return `${M[r1 - 1][c]}${M[M.length - 1][c]}`;
+      else return `${M[r1 - 1][c]}${M[r2 - 1][c]}`;
   }
 }
 
 
 function StessaRiga(r, c1, c2) {
   if (Mode) {
-    if (c2 == M.length - 1) {
-      return `${M[r][c1 + 1]}${M[r][0]}`;
-    }
-    else if (c1 == M.length - 1) {
-      return `${M[r][0]}${M[r][c2 + 1]}`;
-    }
-    else {
-      return `${M[r][c1 + 1]}${M[r][c2 + 1]}`;
-    }
+      if (c2 == M.length - 1) return `${M[r][c1 + 1]}${M[r][0]}`;
+      else if (c1 == M.length - 1)return `${M[r][0]}${M[r][c2 + 1]}`;
+      else return `${M[r][c1 + 1]}${M[r][c2 + 1]}`;
   } else if (Mode == false) {
-    if (c1 == M.length - 1 && c2 == 0) {
-      return `${M[r][c1 - 1]}${M[r][c1]}`;
-    } else if (c2 == 0) {
-      return `${M[r][c1 - 1]}${M[r][M.length - 1]}`;
-    }
-    else if (c1 == 0) {
-      return `${M[r][M.length - 1]}${M[r][c2 - 1]}`;
-    }
-    else {
-      return `${M[r][c1 - 1]}${M[r][c2 - 1]}`;
-    }
+      if (c1 == M.length - 1 && c2 == 0) return `${M[r][c1 - 1]}${M[r][c1]}`;
+      else if (c2 == 0) return `${M[r][c1 - 1]}${M[r][M.length - 1]}`;
+      else if (c1 == 0) return `${M[r][M.length - 1]}${M[r][c2 - 1]}`;
+      else return `${M[r][c1 - 1]}${M[r][c2 - 1]}`;
   }
 }
 
-function Diversi(posI1, posI2, posJ1, posJ2) {
-  return `${M[posI1][posJ2]}${M[posI2][posJ1]}`;
-}
+const Diversi = (posI1, posI2, posJ1, posJ2) => `${M[posI1][posJ2]}${M[posI2][posJ1]}`;
 
 function validateP(input) {
   let regex = /[^a-z ]/gi;
@@ -111,19 +92,19 @@ function validateP(input) {
 }
 
 const setCrypta = () => {
-  document.getElementById("setCrypta").className = "active";
-  document.getElementById("setDecrypta").className = "";
-  document.getElementById("messaggio").value = "";
-  document.getElementById("cifrato").value = "";
+  setCrypta_btn.className = "active";
+  setDecrypta_btn.className = "";
+  messaggio.value = "";
+  cifrato.value = "";
   Mode = true;
 };
 
 const setDecrypta = () => {
 
-  document.getElementById("setDecrypta").className = "active";
-  document.getElementById("setCrypta").className = "";
-  document.getElementById("messaggio").value = "";
-  document.getElementById("cifrato").value = "";
+  setDecrypta_btn.className = "active";
+  setCrypta_btn.className = "";
+  messaggio.value = "";
+  cifrato.value = "";
   Mode = false;
 
 };
@@ -137,18 +118,18 @@ const findIndex = (index, digrafo) => {
       }
     }
   }
+  
   return [posI, posJ];
 };
 
 const Cipher = (input) => {
-  document.getElementById("cifrato").innerHTML = "";
+  cifrato.innerHTML = "";
 
   let str = "";
 
   let digrafi = DividiSwitch(input);
 
-  StampaDigrafi(digrafi);
-
+  // StampaDigrafi(digrafi);
 
   digrafi.forEach((digrafo) => {
 
@@ -166,7 +147,7 @@ const Cipher = (input) => {
     else {
       str += Diversi(posI1, posI2, posJ1, posJ2);
     }
-    document.getElementById("cifrato").value = (!Mode) ? str.toLocaleUpperCase().replace(/x/gi, "") : str.toLocaleUpperCase();
+    cifrato.value = (!Mode) ? str.toLocaleUpperCase().replace(/x/gi, "") : str.toLocaleUpperCase();
   });
 };
 
