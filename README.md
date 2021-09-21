@@ -2,7 +2,7 @@
 
 Cifrario di Playfair scritto in Javascript:
 
-[Prova ora su Github Pages](https://paolo1234.github.io/Cifrario/JS/)
+[Prova ora su Github Pages](https://paolo1234.github.io/Cifrario/)
 
 ## Funzionamento del cifrario di Playfair
 
