@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrario PlayfarJS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 id="titolo">
+        Cifrario Playfair<span style="color: yellow;">[JS]</span>
+    </h1>
+
+    <div id="setMode">
+        <button class="active" id="setCrypta">Crypta</button>
+        <button id="setDecrypta">Decrypta</button>
+    </div>
+
+    <div id="box">
+        <div id="inputbox">
+            <input type="text" name="keyword" id="keyword" placeholder="Parola chiave">
+            <input type="text" name="message" id="message" placeholder="Messaggio">
+        </div>
+
+        <div id="root">
+            <textarea name="outputMessage" id="outputMessage" placeholder="Output" readonly></textarea>
+            <div id="cifrario"></div>
+        </div>
+    </div>
+
+
+    <script src="./main.js" defer></script>
+</body>
+
+</html>
