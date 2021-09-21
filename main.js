@@ -50,8 +50,8 @@ const state = {
 /*
   Ritorna true se il carattere non è già presente all'interno della matrice.  
 */
-const charNotAlreadyExists = (matrix, character) => {
-  for (let row of matrix) {
+const charNotAlreadyExists = (grid, character) => {
+  for (let row of grid) {
     if (row.includes(character)) return 0;
   }
   return 1;
@@ -232,6 +232,7 @@ const setDecryptMode = () => {
   toggleCryptMode();
   state.cryptMode = false;
 }
+
 const setEncryptMode = () => {
   toggleCryptMode();
   state.cryptMode = true;
