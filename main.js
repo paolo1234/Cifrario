@@ -171,8 +171,6 @@ const decrypt = (grid, input) => {
 
   let digrafi = createBigramsFromText(input);
 
-  console.log(digrafi);
-
   if (digrafi === null || digrafi === undefined) return;
   digrafi.forEach((digrafo) => {
 
